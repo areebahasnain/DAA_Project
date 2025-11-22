@@ -28,7 +28,7 @@ def brute_force_closest(points, callback=None):
     for i in range(n):
         for j in range(i + 1, n):
             dist = distance(points[i], points[j])
-            if dist < min_dist:
+            if (dist < min_dist):
                 min_dist = dist
                 pair = (points[i], points[j])
     
@@ -40,7 +40,7 @@ def strip_closest(strip, d, callback=None):
     strip.sort(key=lambda p: p.y)
     
     if callback:
-        callback(f"checking strip with {len(strip)} points", strip, None, min_dist)
+        callback(f'checking strip with {len(strip)} points', strip, None, min_dist)
     
     for i in range(len(strip)):
         j = i + 1
@@ -79,13 +79,13 @@ def closest_pair_recursive(points_x, points_y, callback=None):
         min_pair = right_pair
     
     if callback:
-        callback(f"merging: current min = {min_dist:.4f}", None, None, min_dist)
+        callback(f'merging: current min = {min_dist:.4f}', None, None, min_dist)
     
     strip = [p for p in points_y if abs(p.x - mid_point.x) < min_dist]
     
     if strip:
         strip_dist, strip_pair = strip_closest(strip, min_dist, callback)
-        if strip_dist < min_dist:
+        if (strip_dist < min_dist):
             min_dist = strip_dist
             min_pair = strip_pair
     
@@ -93,7 +93,7 @@ def closest_pair_recursive(points_x, points_y, callback=None):
 
 def closest_pair(points, callback=None):
     if callback:
-        callback(f"starting with {len(points)} points", points, None, None)
+        callback(f'starting with {len(points)} points', points, None, None)
     
     points_x = sorted(points, key=lambda p: p.x)
     points_y = sorted(points, key=lambda p: p.y)
@@ -120,7 +120,7 @@ def karatsuba_multiply(x, y, callback=None, depth=0):
         callback(f"{'  '*depth}split: {x} = {high1}*10^{half} + {low1}", x, y, None, depth)
     
     z0 = karatsuba_multiply(low1, low2, callback, depth + 1)
-    z1 = karatsuba_multiply(low1 + high1, low2 + high2, callback, depth + 1)
+    z1 = karatsuba_multiply((low1 + high1), (low2 + high2), callback, depth + 1)
     z2 = karatsuba_multiply(high1, high2, callback, depth + 1)
     
     result = z2 * (10 ** (2 * half)) + (z1 - z2 - z0) * power + z0
@@ -133,7 +133,7 @@ def karatsuba_multiply(x, y, callback=None, depth=0):
 class AlgorithmGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Divide & Conquer Visualizer")
+        self.root.title('Divide & Conquer Visualizer')
         self.root.geometry("1400x900")
         self.root.configure(bg='#f5f5f5')
         
@@ -151,7 +151,7 @@ class AlgorithmGUI:
         tk.Label(header, text="Divide & Conquer Algorithm Visualizer", 
                 font=('Arial', 26, 'bold'), bg='#3b82f6', fg='white').pack()
         
-        tk.Label(header, text="Closest Pair & Karatsuba Multiplication", 
+        tk.Label(header, text='Closest Pair & Karatsuba Multiplication', 
                 font=('Arial', 13), bg='#3b82f6', fg='white').pack()
         
         container = tk.PanedWindow(self.root, orient=tk.HORIZONTAL, bg='#f5f5f5')
@@ -166,7 +166,7 @@ class AlgorithmGUI:
         self.setup_right(right)
     
     def setup_left(self, parent):
-        algo_frame = tk.LabelFrame(parent, text="Select Algorithm", 
+        algo_frame = tk.LabelFrame(parent, text='Select Algorithm', 
                                    font=('Arial', 13, 'bold'), bg='white', 
                                    fg='#3b82f6', padx=15, pady=15)
         algo_frame.pack(fill=tk.X, padx=10, pady=10)
@@ -178,7 +178,7 @@ class AlgorithmGUI:
                       command=self.algo_changed, font=('Arial', 11),
                       bg='white').pack(anchor=tk.W, pady=5)
         
-        tk.Radiobutton(algo_frame, text="Karatsuba Multiplication",
+        tk.Radiobutton(algo_frame, text='Karatsuba Multiplication',
                       variable=self.algo_var, value="karatsuba",
                       command=self.algo_changed, font=('Arial', 11),
                       bg='white').pack(anchor=tk.W, pady=5)
@@ -188,7 +188,7 @@ class AlgorithmGUI:
                                    fg='#3b82f6', padx=15, pady=15)
         file_frame.pack(fill=tk.X, padx=10, pady=10)
         
-        tk.Button(file_frame, text="Load File", command=self.load_file,
+        tk.Button(file_frame, text='Load File', command=self.load_file,
                  font=('Arial', 12, 'bold'), bg='#3b82f6', fg='white',
                  cursor='hand2', padx=25, pady=10).pack(fill=tk.X, pady=5)
         
@@ -196,7 +196,7 @@ class AlgorithmGUI:
                                 font=('Arial', 10), bg='white', fg='gray')
         self.file_lbl.pack(pady=5)
         
-        tk.Label(file_frame, text="preview:", font=('Arial', 10, 'bold'),
+        tk.Label(file_frame, text='preview:', font=('Arial', 10, 'bold'),
                 bg='white').pack(anchor=tk.W, pady=(10,5))
         
         self.preview = scrolledtext.ScrolledText(file_frame, height=8,
@@ -207,7 +207,7 @@ class AlgorithmGUI:
                  font=('Arial', 13, 'bold'), bg='#10b981', fg='white',
                  cursor='hand2', padx=25, pady=12).pack(fill=tk.X, pady=10)
         
-        stats_frame = tk.LabelFrame(parent, text="Stats", 
+        stats_frame = tk.LabelFrame(parent, text='Stats', 
                                     font=('Arial', 13, 'bold'), bg='white',
                                     fg='#3b82f6', padx=15, pady=15)
         stats_frame.pack(fill=tk.X, padx=10, pady=10)
@@ -221,7 +221,7 @@ class AlgorithmGUI:
         self.tabs.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
         results_tab = tk.Frame(self.tabs, bg='white')
-        self.tabs.add(results_tab, text="Results")
+        self.tabs.add(results_tab, text='Results')
         
         self.results_txt = scrolledtext.ScrolledText(results_tab, 
                                                      font=('Courier', 11),
@@ -236,7 +236,7 @@ class AlgorithmGUI:
         self.canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
         steps_tab = tk.Frame(self.tabs, bg='white')
-        self.tabs.add(steps_tab, text="Steps")
+        self.tabs.add(steps_tab, text='Steps')
         
         self.steps_txt = scrolledtext.ScrolledText(steps_tab, font=('Courier', 10),
                                                    bg='#fafafa', wrap=tk.WORD)
@@ -246,14 +246,14 @@ class AlgorithmGUI:
         self.current_algo = self.algo_var.get()
         self.data = None
         self.result = None
-        self.file_lbl.config(text="no file loaded")
+        self.file_lbl.config(text='no file loaded')
         self.preview.delete(1.0, tk.END)
         self.clear_all()
     
     def load_file(self):
         file = filedialog.askopenfilename(title="select input file",
                                          filetypes=[("text files", "*.txt"),
-                                                   ("all files", "*.*")])
+                                                   ('all files', "*.*")])
         
         if not file:
             return
@@ -267,7 +267,7 @@ class AlgorithmGUI:
             
             lines = content.split('\n')
             prev = '\n'.join(lines[:20])
-            if len(lines) > 20:
+            if (len(lines) > 20):
                 prev += f"\n... ({len(lines)-20} more lines)"
             
             self.preview.insert(1.0, prev)
@@ -287,11 +287,11 @@ class AlgorithmGUI:
             self.clear_all()
             
         except Exception as e:
-            messagebox.showerror("error", f"failed to load:\n{str(e)}")
+            messagebox.showerror('error', f"failed to load:\n{str(e)}")
     
     def run(self):
         if not self.data:
-            messagebox.showwarning("no data", "load a file first")
+            messagebox.showwarning("no data", 'load a file first')
             return
         
         self.steps = []
@@ -307,11 +307,11 @@ class AlgorithmGUI:
             self.tabs.select(0)
             
         except Exception as e:
-            messagebox.showerror("error", f"failed:\n{str(e)}")
+            messagebox.showerror('error', f"failed:\n{str(e)}")
     
     def run_closest_pair(self):
         self.results_txt.insert(tk.END, "="*60 + "\n")
-        self.results_txt.insert(tk.END, "CLOSEST PAIR ALGORITHM\n")
+        self.results_txt.insert(tk.END, 'CLOSEST PAIR ALGORITHM\n')
         self.results_txt.insert(tk.END, "="*60 + "\n\n")
         
         start = time.time()
@@ -327,14 +327,14 @@ class AlgorithmGUI:
         
         self.result = (min_d, pair)
         
-        self.results_txt.insert(tk.END, f"points: {len(self.data)}\n\n")
+        self.results_txt.insert(tk.END, f'points: {len(self.data)}\n\n')
         self.results_txt.insert(tk.END, f"minimum distance: {min_d:.6f}\n\n")
-        self.results_txt.insert(tk.END, f"closest pair:\n")
+        self.results_txt.insert(tk.END, f'closest pair:\n')
         self.results_txt.insert(tk.END, f"  p1: {pair[0]}\n")
-        self.results_txt.insert(tk.END, f"  p2: {pair[1]}\n\n")
+        self.results_txt.insert(tk.END, f'  p2: {pair[1]}\n\n')
         self.results_txt.insert(tk.END, f"time: {(end-start)*1000:.2f} ms\n")
         
-        self.stats.config(text=f"points: {len(self.data)}\nmin dist: {min_d:.4f}\ntime: {(end-start)*1000:.2f} ms")
+        self.stats.config(text=f'points: {len(self.data)}\nmin dist: {min_d:.4f}\ntime: {(end-start)*1000:.2f} ms')
         
         self.visualize_cp()
     
@@ -349,7 +349,7 @@ class AlgorithmGUI:
         def callback(msg, x, y, res, d):
             self.steps.append((msg, x, y, res))
             self.steps_txt.insert(tk.END, f"{msg}\n")
-            if len(self.steps) % 10 == 0:
+            if (len(self.steps) % 10 == 0):
                 self.steps_txt.see(tk.END)
                 self.root.update_idletasks()
         
@@ -358,7 +358,7 @@ class AlgorithmGUI:
         
         self.result = res
         
-        self.results_txt.insert(tk.END, f"num1 ({len(str(n1))} digits):\n")
+        self.results_txt.insert(tk.END, f'num1 ({len(str(n1))} digits):\n')
         s1 = str(n1)
         if len(s1) > 100:
             self.results_txt.insert(tk.END, f"{s1[:50]}...{s1[-50:]}\n\n")
@@ -367,12 +367,12 @@ class AlgorithmGUI:
         
         self.results_txt.insert(tk.END, f"num2 ({len(str(n2))} digits):\n")
         s2 = str(n2)
-        if len(s2) > 100:
+        if (len(s2) > 100):
             self.results_txt.insert(tk.END, f"{s2[:50]}...{s2[-50:]}\n\n")
         else:
             self.results_txt.insert(tk.END, f"{n2}\n\n")
         
-        self.results_txt.insert(tk.END, f"result ({len(str(res))} digits):\n")
+        self.results_txt.insert(tk.END, f'result ({len(str(res))} digits):\n')
         sr = str(res)
         if len(sr) > 100:
             self.results_txt.insert(tk.END, f"{sr[:50]}...{sr[-50:]}\n\n")
@@ -382,7 +382,7 @@ class AlgorithmGUI:
         exp = n1 * n2
         ok = res == exp
         self.results_txt.insert(tk.END, f"verification: {'PASS' if ok else 'FAIL'}\n")
-        self.results_txt.insert(tk.END, f"time: {(end-start)*1000:.2f} ms\n")
+        self.results_txt.insert(tk.END, f'time: {(end-start)*1000:.2f} ms\n')
         
         self.stats.config(text=f"digits: {len(str(n1))}, {len(str(n2))}\nresult: {len(str(res))} digits\ntime: {(end-start)*1000:.2f} ms\nverified: {'yes' if ok else 'no'}")
     
@@ -415,7 +415,7 @@ class AlgorithmGUI:
         self.steps_txt.delete(1.0, tk.END)
         self.fig.clear()
         self.canvas.draw()
-        self.stats.config(text="run algorithm to see stats")
+        self.stats.config(text='run algorithm to see stats')
 
 if __name__ == "__main__":
     root = tk.Tk()
