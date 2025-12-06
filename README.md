@@ -1,2 +1,10 @@
-Abstract
+## Abstract
+
 This paper presents the implementation and evaluation of two fundamental divide-and-conquer algorithms: the closest pair of points problem and Karatsuba's integer multiplication method. A comprehensive system was developed incorporating algorithm implementation, dataset generation, and an interactive user interface for visualization. Twenty test datasets of varying complexity were generated, with input sizes exceeding 100 elements for each algorithm. Experimental results demonstrate the correctness and efficiency of both implementations, with observed time complexities matching theoretical bounds of O(n log n) for closest pair and O(n^1.585) for Karatsuba multiplication. The system successfully provides an intuitive interface for users to select input files and visualize algorithm execution, making these complex divide-and-conquer strategies accessible for educational and practical purposes.
+
+## 1. Introduction
+
+The divide-and-conquer paradigm represents one of the most powerful algorithm design techniques in computer science, breaking complex problems into smaller, manageable subproblems. This approach recursively solves subproblems and combines their solutions to solve the original problem efficiently. Two classical applications of this paradigm are the closest pair of points problem and integer multiplication using Karatsuba's algorithm.
+The closest pair problem seeks to identify the two points with minimum Euclidean distance from a set of points in two-dimensional space. This problem has practical applications in air traffic control, molecular modeling, and geographic information systems. The naive approach requires O(n²) comparisons, but divide-and-conquer reduces this to O(n log n).
+Karatsuba multiplication, developed in 1960, revolutionized large integer multiplication by reducing the complexity from O(n²) to approximately O(n^1.585). This algorithm is fundamental in cryptography, computer algebra systems, and arbitrary-precision arithmetic libraries.
+This project implements both algorithms, generates comprehensive test datasets, and develops an interactive visualization system to demonstrate their operation and efficiency.
