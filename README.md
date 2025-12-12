@@ -12,6 +12,9 @@ This project implements both algorithms, generates comprehensive test datasets, 
 ## 2. Proposed System
 
 The proposed system architecture consists of four primary components working in sequence to provide complete functionality. Figure 1 illustrates the system workflow.
+
+
+
 ┌─────────────────────────────────────────────────────────┐
 │              USER INTERFACE LAYER                        │
 └──────────────────────┬──────────────────────────────────┘
@@ -49,6 +52,12 @@ The proposed system architecture consists of four primary components working in 
 Figure 1: System Architecture
 
 
+
+
+
+
+
+
 The File Selection Module allows users to browse and load input files containing either point coordinates or integer pairs. The Algorithm Processing Layer implements the core divide-and-conquer logic for both problems. For closest pair, the algorithm sorts points by x-coordinate, recursively finds closest pairs in left and right halves, and checks the strip spanning both halves. For Karatsuba multiplication, numbers are split into high and low components, three recursive multiplications are performed, and results are combined using the formula: xy = z₂×10^(2m) + (z₁-z₂-z₀)×10^m + z₀.
 
 The Visualization Engine presents algorithm execution through graphical representations, showing recursive subdivisions and intermediate results. Finally, the Results Display shows final outputs including minimum distance, closest point pairs, multiplication products, and execution times for performance analysis.
@@ -61,16 +70,38 @@ Dataset Generation Methodology:
 For the closest pair problem, ten datasets were generated with varying numbers of points ranging from 100 to 3000. Points were randomly distributed across a coordinate space of 0 to 10,000 units in both x and y dimensions using uniform distribution. Table 1 summarizes the closest pair datasets:
 
 
-Table 1: Closest Pair Dataset Specifications
-File IDPointsCoordinate RangeSample Coordinatesinput_01100[0, 10000](5234.67, 8901.23), (456.78, 2341.90)input_02150[0, 10000](7812.45, 1234.56), (9023.11, 5678.34)input_03200[0, 10000](3456.89, 6789.12), (1289.45, 4512.78)input_04300[0, 10000](8901.23, 2345.67), (4567.89, 7890.12)input_05500[0, 10000](6234.56, 3456.78), (2901.34, 8123.45)input_06750[0, 10000](5678.90, 9012.34), (3345.67, 1678.90)input_071000[0, 10000](4123.45, 5567.89), (7890.12, 4234.56)input_081500[0, 10000](9234.56, 6789.01), (1456.78, 3901.23)input_092000[0, 10000](2567.89, 7123.45), (8345.67, 2678.90)input_103000[0, 10000](6890.12, 4456.78), (5123.45, 9234.56)
+### Table 1: Closest Pair Dataset Specifications
+
+| File ID   | Points | Coordinate Range | Sample Coordinates                                       |
+|-----------|--------|------------------|-----------------------------------------------------------|
+| input_01  | 100    | [0, 10000]       | (5234.67, 8901.23), (456.78, 2341.90)                    |
+| input_02  | 150    | [0, 10000]       | (7812.45, 1234.56), (9023.11, 5678.34)                   |
+| input_03  | 200    | [0, 10000]       | (3456.89, 6789.12), (1289.45, 4512.78)                   |
+| input_04  | 300    | [0, 10000]       | (8901.23, 2345.67), (4567.89, 7890.12)                   |
+| input_05  | 500    | [0, 10000]       | (6234.56, 3456.78), (2901.34, 8123.45)                   |
+| input_06  | 750    | [0, 10000]       | (5678.90, 9012.34), (3345.67, 1678.90)                   |
+| input_07  | 1000   | [0, 10000]       | (4123.45, 5567.89), (7890.12, 4234.56)                   |
+| input_08  | 1500   | [0, 10000]       | (9234.56, 6789.01), (1456.78, 3901.23)                   |
+| input_09  | 2000   | [0, 10000]       | (2567.89, 7123.45), (8345.67, 2678.90)                   |
+| input_10  | 3000   | [0, 10000]       | (6890.12, 4456.78), (5123.45, 9234.56)                   |
 
 For integer multiplication, ten datasets containing pairs of large integers were generated with digit lengths ranging from 100 to 2000 digits. Random integers were generated within specified digit ranges to ensure consistent complexity levels. Table 2 presents the multiplication dataset specifications:
 
-Table 2: Integer Multiplication Dataset Specifications
-File IDDigitsNumber 1 (partial)Number 2 (partial)input_011001234567890123...7899876543210987...321input_021505678901234567...2344321098765432...876input_032009012345678901...4568765432109876...543input_043003456789012345...8906543210987654...210input_054007890123456789...1232109876543210...987input_065001234509876543...5679876501234567...654input_077505678923456789...9014321076543210...098input_0810009012367890123...3458765454321098...765input_0915003456701234567...7896543298765432...432input_1020007890145678901...0122109832109876...109
+### Table 2: Integer Multiplication Dataset Specifications
 
+| File ID  | Digits | Number 1 (partial)            | Number 2 (partial)            |
+|----------|--------|--------------------------------|--------------------------------|
+| input_01 | 100    | 1234567890123...789           | 9876543210987...321            |
+| input_02 | 150    | 5678901234567...234           | 4321098765432...876            |
+| input_03 | 200    | 9012345678901...456           | 8765432109876...543            |
+| input_04 | 300    | 3456789012345...890           | 6543210987654...210            |
+| input_05 | 400    | 7890123456789...123           | 2109876543210...987            |
+| input_06 | 500    | 1234509876543...567           | 9876501234567...654            |
+| input_07 | 750    | 5678923456789...901           | 4321076543210...098            |
+| input_08 | 1000   | 9012367890123...345           | 8765454321098...765            |
+| input_09 | 1500   | 3456701234567...789           | 6543298765432...432            |
+| input_10 | 2000   | 7890145678901...012           | 2109832109876...109            |
 
-All datasets were saved in plain text format with appropriate delimiters for easy parsing and processing.
 
 
 
