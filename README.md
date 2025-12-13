@@ -15,39 +15,19 @@ The proposed system architecture consists of four primary components working in 
 
 
 
-┌─────────────────────────────────────────────────────────┐
-│              USER INTERFACE LAYER                        │
-└──────────────────────┬──────────────────────────────────┘
-                       │
-                       ▼
-        ┌──────────────────────────┐
-        │   File Selection Module   │
-        └──────────┬───────────────┘
-                   │
-          ┌────────┴────────┐
-          │                 │
-          ▼                 ▼
-    ┌─────────┐       ┌─────────┐
-    │ Closest │       │ Integer │
-    │  Pair   │       │  Mult   │
-    └────┬────┘       └────┬────┘
-         │                 │
-         ▼                 ▼
-    ┌─────────┐       ┌─────────┐
-    │   D&C   │       │   D&C   │
-    │ Closest │       │ Karat-  │
-    │  Algo   │       │  suba   │
-    └────┬────┘       └────┬────┘
-         │                 │
-         └────────┬────────┘
-                  ▼
-        ┌─────────────────┐
-        │  Visualization  │
-        └────────┬────────┘
-                 ▼
-        ┌─────────────────┐
-        │ Results Display │
-        └─────────────────┘
+### Figure 1: System Architecture
+
+```mermaid
+graph TD
+    A[USER INTERFACE LAYER] --> B[File Selection Module]
+    B --> C1[Closest Pair Algo]
+    B --> C2[Integer Mult Algo]
+    C1 --> D1[D&C Closest Algo]
+    C2 --> D2[D&C Karatsuba]
+    D1 --> E[Visualization]
+    D2 --> E
+    E --> F[Results Display]
+```
 
 Figure 1: System Architecture
 
