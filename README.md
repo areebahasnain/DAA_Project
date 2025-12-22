@@ -87,7 +87,7 @@ For integer multiplication, ten datasets containing pairs of large integers were
 
 
 ## 4. Results and Discussion
-Both algorithms were executed successfully on all generated datasets. Results were verified against brute-force solutions and Python's built-in operations to ensure correctness.
+Both algorithms were executed successfully on all generated datasets. Results were verified against brute-force solutions and Python's built-in operations to ensure correctness. In terms of the visualisation if there is no apparent visualisation available or possible regarding an algorithm then the interface just remains blank on the option if clicked. All steps however are shown consistently. 
 
 Table 3: Closest Pair Algorithm Results
 | File       | Points | Min Distance | Closest Point Pair                                      | Time (ms) |
@@ -130,7 +130,7 @@ The user interface successfully enables file selection and displays both algorit
 ## 5. Conclusion
 This project successfully implemented two fundamental divide-and-conquer algorithms with comprehensive testing and visualization capabilities. Twenty diverse datasets were generated and processed, demonstrating algorithm correctness and efficiency across varying input complexities. The closest pair algorithm achieved O(n log n) performance, while Karatsuba multiplication exhibited O(n^1.585) complexity as theoretically predicted.
 The interactive user interface provides an accessible platform for understanding these sophisticated algorithms through visual representation of their execution. All experimental results verified the correctness of implementations against standard solutions.
-Future enhancements could include additional divide-and-conquer algorithms such as merge sort or Strassen's matrix multiplication, real-time performance profiling visualization, and comparative analysis with alternative algorithmic approaches. The modular system architecture facilitates such extensions with minimal modification.
+Future enhancements could include additional divide-and-conquer algorithms such as merge sort or Strassen's matrix multiplication, real-time performance profiling visualization, and comparative analysis with alternative algorithmic approaches. The modular system architecture facilitates such extensions with minimal modification. Another systematic improvement could be the addition of a generate button that generates new test datasets. 
 
 ## 6. References
 
